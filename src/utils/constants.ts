@@ -248,10 +248,6 @@ const REDIS_WRITE_COMMANDS: IRedisCommandPattern[] = [
 
   // Geo commands
   { command: "GEOADD", category: "geo", canDbInsert: true },
-  { command: "GEOHASH", category: "geo" },
-  { command: "GEORADIUS", category: "geo" },
-  { command: "GEORADIUSBYMEMBER", category: "geo" },
-  { command: "GEOSEARCH", category: "geo" },
 
   // Keyspace (generic) commands
   //"DEL",
@@ -311,9 +307,6 @@ const REDIS_WRITE_COMMANDS: IRedisCommandPattern[] = [
   //"FT.DEL",
   { command: "FT.SUGADD", category: "search", canDbInsert: true },
   { command: "FT.SUGDEL", category: "search" },
-  { command: "FT.SUGLEN", category: "search" },
-  { command: "FT.SUGGET", category: "search" },
-  { command: "FT.AGGREGATE", category: "search" },
 
   //Redis Vector Sets commands
   //{ command: "VADD", category: "vectorSets", canDbInsert: true },
@@ -352,6 +345,8 @@ const REDIS_READ_COMMANDS: IRedisCommandPattern[] = [
   { command: "FT._LIST", category: "search", keyPattern: { type: "none" } },
   { command: "FT.EXPLAIN", category: "search" },
   { command: "FT.AGGREGATE", category: "search" },
+  { command: "FT.SUGLEN", category: "search" },
+  { command: "FT.SUGGET", category: "search" },
 
   // RedisJSON commands
   { command: "JSON.GET", category: "json" },
@@ -402,6 +397,12 @@ const REDIS_READ_COMMANDS: IRedisCommandPattern[] = [
   { command: "HMGET", category: "core" },
   { command: "HGETALL", category: "core" },
   { command: "HEXISTS", category: "core" },
+
+  // Geo read commands
+  { command: "GEOHASH", category: "geo" },
+  { command: "GEORADIUS", category: "geo" },
+  { command: "GEORADIUSBYMEMBER", category: "geo" },
+  { command: "GEOSEARCH", category: "geo" },
 ];
 
 const REDIS_ALLOWED_COMMANDS = [

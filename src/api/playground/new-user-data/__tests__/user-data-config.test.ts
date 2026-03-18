@@ -308,44 +308,6 @@ const writeQueryDetails: QueryDetailsType = {
       expectAnswer: false,
     },
   ],
-  GEOHASH: [
-    { query: "GEOHASH pg:geo member1", expectAnswer: true },
-    { query: "GEOHASH other:geo member1", expectAnswer: false },
-  ],
-  GEORADIUS: [
-    { query: "GEORADIUS pg:geo 15 37 200 km", expectAnswer: true },
-    { query: "GEORADIUS other:geo 15 37 200 km", expectAnswer: false },
-  ],
-  GEORADIUSBYMEMBER: [
-    { query: "GEORADIUSBYMEMBER pg:geo member 200 km", expectAnswer: true },
-    { query: "GEORADIUSBYMEMBER other:geo member 200 km", expectAnswer: false },
-  ],
-  GEOSEARCH: [
-    {
-      query: "GEOSEARCH pg:geo FROMMEMBER member BYRADIUS 10 km",
-      expectAnswer: true,
-    },
-    {
-      query: "GEOSEARCH other:geo FROMMEMBER member BYRADIUS 10 km",
-      expectAnswer: false,
-    },
-    {
-      query: "GEOSEARCH pg:geo FROMLONLAT 15 37 BYRADIUS 10 km",
-      expectAnswer: true,
-    },
-    {
-      query: "GEOSEARCH other:geo FROMLONLAT 15 37 BYRADIUS 10 km",
-      expectAnswer: false,
-    },
-    {
-      query: "GEOSEARCH pg:geo FROMMEMBER member BYBOX 10 10 km",
-      expectAnswer: true,
-    },
-    {
-      query: "GEOSEARCH other:geo FROMMEMBER member BYBOX 10 10 km",
-      expectAnswer: false,
-    },
-  ],
   // Keyspace (generic) commands
   EXPIRE: [
     { query: "EXPIRE pg:key 60", expectAnswer: true },
@@ -473,18 +435,6 @@ const writeQueryDetails: QueryDetailsType = {
   "FT.SUGDEL": [
     { query: "FT.SUGDEL pg:sug foo", expectAnswer: true },
     { query: "FT.SUGDEL other:sug foo", expectAnswer: false },
-  ],
-  "FT.SUGLEN": [
-    { query: "FT.SUGLEN pg:sug", expectAnswer: true },
-    { query: "FT.SUGLEN other:sug", expectAnswer: false },
-  ],
-  "FT.SUGGET": [
-    { query: "FT.SUGGET pg:sug foo", expectAnswer: true },
-    { query: "FT.SUGGET other:sug foo", expectAnswer: false },
-  ],
-  "FT.AGGREGATE": [
-    { query: 'FT.AGGREGATE pg:index "*"', expectAnswer: true },
-    { query: 'FT.AGGREGATE other:index "*"', expectAnswer: false },
   ],
   // TimeSeries module commands
   "TS.ADD": [
@@ -637,6 +587,54 @@ const readQueryDetails: QueryDetailsType = {
   "FT.AGGREGATE": [
     { query: "FT.AGGREGATE pg:index '*'", expectAnswer: true },
     { query: "FT.AGGREGATE other:index '*'", expectAnswer: false },
+  ],
+  "FT.SUGLEN": [
+    { query: "FT.SUGLEN pg:sug", expectAnswer: true },
+    { query: "FT.SUGLEN other:sug", expectAnswer: false },
+  ],
+  "FT.SUGGET": [
+    { query: "FT.SUGGET pg:sug foo", expectAnswer: true },
+    { query: "FT.SUGGET other:sug foo", expectAnswer: false },
+  ],
+
+  // Geo read commands
+  GEOHASH: [
+    { query: "GEOHASH pg:geo member1", expectAnswer: true },
+    { query: "GEOHASH other:geo member1", expectAnswer: false },
+  ],
+  GEORADIUS: [
+    { query: "GEORADIUS pg:geo 15 37 200 km", expectAnswer: true },
+    { query: "GEORADIUS other:geo 15 37 200 km", expectAnswer: false },
+  ],
+  GEORADIUSBYMEMBER: [
+    { query: "GEORADIUSBYMEMBER pg:geo member 200 km", expectAnswer: true },
+    { query: "GEORADIUSBYMEMBER other:geo member 200 km", expectAnswer: false },
+  ],
+  GEOSEARCH: [
+    {
+      query: "GEOSEARCH pg:geo FROMMEMBER member BYRADIUS 10 km",
+      expectAnswer: true,
+    },
+    {
+      query: "GEOSEARCH other:geo FROMMEMBER member BYRADIUS 10 km",
+      expectAnswer: false,
+    },
+    {
+      query: "GEOSEARCH pg:geo FROMLONLAT 15 37 BYRADIUS 10 km",
+      expectAnswer: true,
+    },
+    {
+      query: "GEOSEARCH other:geo FROMLONLAT 15 37 BYRADIUS 10 km",
+      expectAnswer: false,
+    },
+    {
+      query: "GEOSEARCH pg:geo FROMMEMBER member BYBOX 10 10 km",
+      expectAnswer: true,
+    },
+    {
+      query: "GEOSEARCH other:geo FROMMEMBER member BYBOX 10 10 km",
+      expectAnswer: false,
+    },
   ],
 };
 
